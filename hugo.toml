@@ -1,0 +1,55 @@
+baseURL = "https://cabranca.github.io/"
+languageCode = "en-us"
+title = "Joaquin Cabrera — Game Engine Dev"
+theme = "PaperMod"
+[pagination]
+  pagerSize = 10
+
+[params]
+  description = "Devlog for Cabrankengine — a C++/OpenGL game engine built from scratch."
+  author = "Joaquin Cabrera"
+  ShowReadingTime = true
+  ShowShareButtons = false
+  ShowPostNavLinks = true
+  ShowCodeCopyButtons = true
+  ShowBreadCrumbs = true
+  ShowToc = true
+
+  [params.homeInfoParams]
+    Title = "Hi, I'm Joaquin"
+    Content = "I'm a graphics programmer building [Cabrankengine](https://github.com/cabranca/game-dev) — a 2D/3D game engine written in C++23 with OpenGL. This is my devlog."
+
+  [[params.socialIcons]]
+    name = "github"
+    url  = "https://github.com/cabranca/game-dev"
+
+  [[params.socialIcons]]
+    name = "linkedin"
+    url  = "https://linkedin.com/in/joaquin-cabrera"
+
+[taxonomies]
+  tag = "tags"
+  series = "series"
+
+[menu]
+  [[menu.main]]
+    name       = "Posts"
+    url        = "/posts/"
+    weight     = 1
+  [[menu.main]]
+    name       = "Tags"
+    url        = "/tags/"
+    weight     = 2
+  [[menu.main]]
+    name       = "Engine repo"
+    url        = "https://github.com/cabranca/game-dev"
+    weight     = 3
+
+[markup]
+  [markup.highlight]
+    style              = "monokai"
+    lineNos            = false
+    guessSyntax        = true
+    noClasses          = true
+  [markup.goldmark.renderer]
+    unsafe = true

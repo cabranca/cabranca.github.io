@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Series on Joaquin Cabrera — Game Engine Dev</title>
+    <link>https://cabranca.github.io/series/</link>
+    <description>Recent content in Series on Joaquin Cabrera — Game Engine Dev</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 01 Jun 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://cabranca.github.io/series/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Cabrankengine Devlog</title>
+      <link>https://cabranca.github.io/series/cabrankengine-devlog/</link>
+      <pubDate>Sat, 01 Jun 2024 00:00:00 +0000</pubDate>
+      <guid>https://cabranca.github.io/series/cabrankengine-devlog/</guid>
+      <description></description>
+    </item>
+  </channel>
+</rss>

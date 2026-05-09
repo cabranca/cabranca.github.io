@@ -1,0 +1,16 @@
+# Hugo build output — rebuilt by CI
+public/
+
+# Hugo cache and lock
+resources/
+.hugo_build.lock
+
+# macOS
+.DS_Store
+
+# Editor
+.vscode/
+.idea/
+
+# Node (if ever used for tooling)
+node_modules/

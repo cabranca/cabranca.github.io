@@ -1,0 +1,53 @@
+<style>
+  .lang-switcher {
+    margin: 0 0 1.8rem;
+  }
+
+  .lang-btn {
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 0.35rem 0.85rem;
+    cursor: pointer;
+    font-size: 0.8rem;
+    font-family: inherit;
+    color: var(--secondary);
+    transition: color 0.15s, border-color 0.15s;
+  }
+
+  .lang-btn:hover {
+    color: var(--primary);
+    border-color: var(--primary);
+  }
+
+  /* Default: show EN, hide ES */
+  .lang-es {
+    display: none;
+  }
+
+  .lang-label-es {
+    display: none;
+  }
+
+  /* When html has show-es: swap */
+  html.show-es .lang-en {
+    display: none;
+  }
+
+  html.show-es .lang-es {
+    display: block;
+  }
+
+  html.show-es .lang-label-en {
+    display: none;
+  }
+
+  html.show-es .lang-label-es {
+    display: inline;
+  }
+</style>
+<script>
+  if (localStorage.getItem('cbk-lang') === 'es') {
+    document.documentElement.classList.add('show-es');
+  }
+</script>

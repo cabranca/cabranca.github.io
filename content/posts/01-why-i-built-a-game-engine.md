@@ -1,6 +1,6 @@
 ---
 title: "Why I Built a Game Engine"
-date: 2026-05-11
+date: 2026-05-09
 draft: false
 ---
 
@@ -19,11 +19,12 @@ La respuesta corta es que no estaba tratando de reemplazarlos. La respuesta larg
 {{% /lang %}}
 
 ---
-
+{{% lang "en" %}}
 ## Before the engine
 
-{{% lang "en" %}}
 Like many others, it all started with video games. My passion since childhood, they were always a place of refuge, creativity, and incredible stories. So it was no surprise that one day I asked myself how these games I loved were made — that's when I discovered Unity and Unreal Engine.
+
+However, I didn't dive straight into programming. I've always been very curious and had many interests, so when I finished high school I enrolled in Geology, then Physics, and finally Computer Science. Almost without realizing it, I took a programming workshop at my university and discovered I really enjoyed coding. Then one day I came back to video games.
 
 I decided to start with Unity. I watched a tutorial on YouTube, and with what I learned I said "time to build something on my own." Being a bit obsessive, I had to start with Pong (obviously). I slowly scripted it together, drew some blocks in MS Paint, and added my own touch: a randomized RickRoll (very fashionable at the time).
 
@@ -37,7 +38,11 @@ My mind was made up. I had to create Cabrankengine.
 {{% /lang %}}
 
 {{% lang "es" %}}
+## Antes del motor
+
 Como muchos otros, todo comenzó con los videojuegos. Mi pasión desde pequeño, siempre fueron un lugar de refugio, de creatividad y de historias increíbles. No fue extraño entonces que un día me preguntara cómo se hacían estos juegos que yo amaba. Ahí es cuando me enteré de la existencia de Unity y Unreal Engine.
+
+Sin embargo, no me metí de lleno a programar. Siempre fui muy curioso y con muchos gustos, por lo que al terminar la secundaria me anoté en Geología, luego en Física, finalmente en Computación. Casi sin quererlo, hice un taller de programación en mi universidad y descubrí que me divertía mucho programar. Entonces un día volví a los videojuegos.
 
 Decidí empezar con Unity. Me vi un tutorial en Youtube y con lo que aprendía dije "es hora de hacer algo solo", y como soy un poco obsesivo, tuve que empezar con Pong (obviamente). De a poco fui scripteando, creando bloques en MS Paint y para agregarle algo propio, un RickRoll randomizado (muy de moda en aquella época).
 
@@ -52,9 +57,9 @@ Lo tenía decidido. Tenía que crear Cabrankengine.
 
 ---
 
+{{% lang "en" %}}
 ## What I was trying to learn
 
-{{% lang "en" %}}
 As soon as I started researching game engines, I understood I'd have to master many fields of computer science. I couldn't have been happier with the decision. If there's one thing I love, it's learning and building — and there's a lot of ground to cover here.
 
 So I started asking myself a lot of questions to guide my path:
@@ -68,6 +73,8 @@ These are just a few of them. Luckily the list never ends and there's always som
 {{% /lang %}}
 
 {{% lang "es" %}}
+## Lo que estaba intentando aprender
+
 Apenas empecé a investigar sobre motores de videojuegos, entendí que tendría que dominar muchos campos de las ciencias de la computación. No podría haber estado más contento con la decisión. Si hay algo que me gusta es aprender y hacer, y acá hay mucha tela para cortar.
 
 Es entonces que comencé a hacerme muchas preguntas para guiarme en mi camino:
@@ -82,9 +89,9 @@ Estas son solo algunas de las preguntas. Por suerte la lista nunca acaba y siemp
 
 ---
 
+{{% lang "en" %}}
 ## What it became
 
-{{% lang "en" %}}
 What started as a learning exercise turned into something I'm genuinely proud of. Cabrankengine today covers:
 
 - A full 2D batch renderer that draws hundreds of sprites in a single draw call
@@ -98,6 +105,8 @@ None of that was planned from day one. It grew because every answer to "how does
 {{% /lang %}}
 
 {{% lang "es" %}}
+## En lo que se convirtió
+
 Lo que comenzó como un ejercicio de aprendizaje se convirtió en algo de lo que estoy genuinamente orgulloso. Cabrankengine hoy incluye:
 
 - Un batch renderer 2D completo que dibuja cientos de sprites en un solo draw call
@@ -112,9 +121,9 @@ Nada de eso estaba planeado desde el día uno. Fue creciendo porque cada respues
 
 ---
 
+{{% lang "en" %}}
 ## Why document it now?
 
-{{% lang "en" %}}
 I decided to write these blog posts for several reasons:
 
 - I like sharing what I do.
@@ -126,6 +135,8 @@ This series will trace the development roughly in the order things were built. I
 {{% /lang %}}
 
 {{% lang "es" %}}
+## ¿Por qué documentarlo ahora?
+
 Decidí escribir estos blogs por varias razones:
 
 - Me gusta compartir lo que hago.

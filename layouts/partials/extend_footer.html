@@ -1,19 +1,26 @@
 <script>
-  function syncToc(isEs) {
-    document.querySelectorAll('.toc a[href^="#"]').forEach(a => {
-      const heading = document.getElementById(a.getAttribute('href').slice(1));
-      if (!heading) return;
-      a.parentElement.style.display = (heading.closest('.lang-es') !== null) === isEs ? '' : 'none';
-    });
-  }
-
-  function toggleLang() {
-    const isEs = document.documentElement.classList.toggle('show-es');
-    localStorage.setItem('cbk-lang', isEs ? 'es' : 'en');
-    syncToc(isEs);
-  }
-
   document.addEventListener('DOMContentLoaded', () => {
+    const langMap = {};
+    document.querySelectorAll('.lang-en [id], .lang-es [id]').forEach(el => {
+      langMap[el.id] = el.closest('.lang-es') !== null;
+    });
+
+    function syncToc(isEs) {
+      document.querySelectorAll('.toc a[href^="#"]').forEach(a => {
+        const id = decodeURIComponent(a.getAttribute('href').slice(1));
+        if (id in langMap) {
+          a.parentElement.style.display = langMap[id] === isEs ? '' : 'none';
+        }
+      });
+    }
+
+    function toggleLang() {
+      const isEs = document.documentElement.classList.toggle('show-es');
+      localStorage.setItem('cbk-lang', isEs ? 'es' : 'en');
+      syncToc(isEs);
+    }
+    window.toggleLang = toggleLang;
+
     const isEs = localStorage.getItem('cbk-lang') === 'es';
     if (isEs) document.documentElement.classList.add('show-es');
     syncToc(isEs);

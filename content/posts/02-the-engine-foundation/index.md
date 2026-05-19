@@ -61,13 +61,47 @@ Funcionó. Con las aristas sin pulir, con funcionalidades faltando por todos lad
 
 The first real architectural decision was how to separate the engine from the game. The solution is clean in hindsight: the engine defines an `Application` class that owns the window, the event system, and the main loop. The game code lives in a subclass that inherits from it. Critically, the entry point belongs to the engine — the game just provides an instance of itself and hands control over.
 
-> _[Code snippet: Application class and entry point]_
+```cpp
+// EntryPoint.h
+extern cbk::Application* cbk::createApplication();
+
+int main(int argc, char** argv) {
+	cbk::Logger::init();
+	auto app = cbk::createApplication();
+	app->Run();
+	delete app;
+}
+
+// Application.h - function defined outside Application class
+Application* createApplication();
+
+// SandboxApplication.h
+class Sandbox : public Application {
+  public:
+	Sandbox() {
+		pushLayer(new ExampleLayer()); // The example layer will have the gameplay code
+	}
+};
+
+Application* cbk::createApplication() {
+	return new Sandbox();
+}
+
+```
 
 This way the game never has to manage `main`. It just says what it is, and the engine takes care of the rest.
 
 The main loop also introduced the concept of layers. Instead of letting the application monolithically update everything, all logic is pushed onto a layer stack. Each frame, the engine calls `OnUpdate` on every layer in order. Then, in a second pass over the same stack, it calls `OnImGuiRender` — so debug UI always renders on top, no matter what the layers below are doing.
 
-> _[Code snippet: Layer stack and main loop]_
+```cpp
+for (Layer* layer : m_LayerStack)
+    layer->onUpdate(timestep);
+
+m_ImGuiLayer->begin();
+for (Layer* layer : m_LayerStack)
+    layer->onImGuiRender();
+m_ImGuiLayer->end();	
+```
 
 It's a simple idea, but it made the engine composable in a way that would matter a lot later.
 {{% /lang %}}
@@ -77,13 +111,47 @@ It's a simple idea, but it made the engine composable in a way that would matter
 
 La primera decisión arquitectónica real fue cómo separar el motor del juego. La solución es clara en retrospectiva: el motor define una clase `Application` que es dueña de la ventana, el sistema de eventos y el loop principal. El código del juego vive en una subclase que hereda de ella. Lo importante es que el entry point le pertenece al motor — el juego simplemente provee una instancia de sí mismo y cede el control.
 
-> _[Snippet de código: clase Application y entry point]_
+```cpp
+// EntryPoint.h
+extern cbk::Application* cbk::createApplication();
+
+int main(int argc, char** argv) {
+	cbk::Logger::init();
+	auto app = cbk::createApplication();
+	app->Run();
+	delete app;
+}
+
+// Application.h - function defined outside Application class
+Application* createApplication();
+
+// SandboxApplication.h
+class Sandbox : public Application {
+  public:
+	Sandbox() {
+		pushLayer(new ExampleLayer()); // The example layer will have the gameplay code
+	}
+};
+
+Application* cbk::createApplication() {
+	return new Sandbox();
+}
+
+```
 
 De esta forma el juego nunca tiene que manejar el `main`. Solo dice lo que es y el motor se encarga del resto.
 
 El loop principal también introdujo el concepto de capas. En lugar de dejar que la aplicación actualice todo monolíticamente, toda la lógica se apila en un stack de capas. Cada frame, el motor llama a `OnUpdate` en cada capa en orden. Luego, en un segundo recorrido por el mismo stack, llama a `OnImGuiRender` — así la UI de debug siempre se renderiza encima, sin importar lo que las capas de abajo estén haciendo.
 
-> _[Snippet de código: Layer stack y loop principal]_
+```cpp
+for (Layer* layer : m_LayerStack)
+    layer->onUpdate(timestep);
+
+m_ImGuiLayer->begin();
+for (Layer* layer : m_LayerStack)
+    layer->onImGuiRender();
+m_ImGuiLayer->end();	
+```
 
 Es una idea simple, pero haría al motor componible de una manera que importaría mucho más adelante.
 {{% /lang %}}
@@ -101,7 +169,7 @@ After the previous chapter of working directly with OpenGL, implementing the `Op
 
 Putting it all together and seeing a textured quad on screen for the first time was one of those moments that makes the whole project worth it.
 
-> _[Image: first textured quad rendered with CabrankEngine]_
+![A textured quad rendered by the engine](textured-quad.png)
 
 But it was also the moment I started asking questions I didn't have answers to yet. Was this `Renderer` interface actually clean enough for someone building a game on top of it? And more importantly — would it hold up if I plugged in a different backend? Looking at it honestly, everything felt a little too tailored to OpenGL for my comfort. I'd need to find out.
 {{% /lang %}}
@@ -117,7 +185,7 @@ Después del capítulo anterior trabajando directamente con OpenGL, implementar 
 
 Juntar todo y ver por primera vez un quad con textura en pantalla fue uno de esos momentos que hacen que valga la pena todo el proyecto.
 
-> _[Imagen: primer quad con textura renderizado con CabrankEngine]_
+![Un quad con textura renderizado por el motor](textured-quad.png)
 
 Pero también fue el momento en que empecé a hacerme preguntas que todavía no tenía respuestas. ¿Era esta interfaz `Renderer` realmente lo suficientemente limpia para alguien construyendo un juego encima? Y más importante — ¿aguantaría si enchufaba un backend diferente? Mirándolo con honestidad, todo se sentía un poco demasiado adaptado a OpenGL para mi gusto. Tendría que averiguarlo.
 {{% /lang %}}

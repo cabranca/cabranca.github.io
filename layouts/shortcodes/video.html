@@ -1,0 +1,11 @@
+{{- $src := .Get "src" -}}
+{{- $alt := .Get "alt" -}}
+<figure>
+  <video autoplay loop muted playsinline controls preload="metadata" aria-label="{{ $alt }}">
+    <source src="{{ $src }}" type="video/webm">
+    Your browser does not support the video tag.
+  </video>
+  {{- with $alt -}}
+  <figcaption>{{ . }}</figcaption>
+  {{- end -}}
+</figure>
